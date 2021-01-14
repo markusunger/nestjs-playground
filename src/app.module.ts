@@ -1,8 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { TodoModule } from './todo/todo.module';
 
 @Module({
@@ -25,13 +23,11 @@ import { TodoModule } from './todo/todo.module';
                     password: configService.get('DB_PASSWORD'),
                     database: configService.get('DB_NAME'),
                     synchronize: true, // for the time being, change to false and add migrations later
-                    entities: ['todo/entities/*'],
+                    entities: ['src/todo/entities/**.entity{.ts,.js}'],
                 };
             },
         }),
         TodoModule,
     ],
-    controllers: [AppController],
-    providers: [AppService],
 })
 export class AppModule {}
