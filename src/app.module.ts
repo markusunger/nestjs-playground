@@ -23,7 +23,7 @@ import { TodoModule } from './todo/todo.module';
                     password: configService.get('DB_PASSWORD'),
                     database: configService.get('DB_NAME'),
                     synchronize: true, // for the time being, change to false and add migrations later
-                    entities: ['src/todo/entities/**.entity{.ts,.js}'],
+                    entities: ['dist/todo/entities/**.entity{.ts,.js}'],
                 };
             },
         }),
